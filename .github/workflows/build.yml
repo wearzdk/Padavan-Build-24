@@ -6,114 +6,114 @@ on:
   workflow_dispatch:
     inputs:
       target:
-        description: 'Select the router device'
+        description: "Select the router device"
         required: true
         type: choice
         options:
-        - 360-T6M
-        - 360-T6M-PB
-        - B70
-        - BELL-A040WQ
-        - C-Life-XG1
-        - CR660x
-        - DIR-878
-        - DIR-882
-        - EA7500
-        - G-AX1800
-        - GHL
-        - HAR-20S2U1
-        - JCG-836PRO
-        - JCG-AC860M
-        - JCG-Q11Pro
-        - JCG-Q20
-        - JCG-Q20-PB
-        - JCG-Y2
-        - K2P
-        - K2P-NANO
-        - K2P-USB
-        - MI-4
-        - MI-R3G
-        - MI-R3P-PB
-        - MI-R3P-SPI
-        - MI-R3P
-        - MI-R4A
-        - MR2600
-        - MSG1500
-        - MSG1500-Z
-        - NETGEAR-BZV
-        - NETGEAR-R6800
-        - NETGEAR-R7450
-        - NEWIFI
-        - NEWIFI3
-        - QM-B1
-        - R2100
-        - RE-CP-02
-        - RE-SP-01B
-        - RM2100
-        - RT-AC85P
-        - SIM-AX1800T
-        - TX1801
-        - WDR8620
-        - WE410443-TC
-        - WIA3300-10
-        - WR1200JS
-        - XY-C1
-        - ZTE-E8820S
-        - ZTE-E8820V2
+          - 360-T6M
+          - 360-T6M-PB
+          - B70
+          - BELL-A040WQ
+          - C-Life-XG1
+          - CR660x
+          - DIR-878
+          - DIR-882
+          - EA7500
+          - G-AX1800
+          - GHL
+          - HAR-20S2U1
+          - JCG-836PRO
+          - JCG-AC860M
+          - JCG-Q11Pro
+          - JCG-Q20
+          - JCG-Q20-PB
+          - JCG-Y2
+          - K2P
+          - K2P-NANO
+          - K2P-USB
+          - MI-4
+          - MI-R3G
+          - MI-R3P-PB
+          - MI-R3P-SPI
+          - MI-R3P
+          - MI-R4A
+          - MR2600
+          - MSG1500
+          - MSG1500-Z
+          - NETGEAR-BZV
+          - NETGEAR-R6800
+          - NETGEAR-R7450
+          - NEWIFI
+          - NEWIFI3
+          - QM-B1
+          - R2100
+          - RE-CP-02
+          - RE-SP-01B
+          - RM2100
+          - RT-AC85P
+          - SIM-AX1800T
+          - TX1801
+          - WDR8620
+          - WE410443-TC
+          - WIA3300-10
+          - WR1200JS
+          - XY-C1
+          - ZTE-E8820S
+          - ZTE-E8820V2
         default: K2P
       toolchain:
-        description: 'Select the compilation toolchain'
+        description: "Select the compilation toolchain"
         required: true
         type: choice
         options:
-        - mipsel-linux-musl
-        - mipsel-linux-uclibc
+          - mipsel-linux-musl
+          - mipsel-linux-uclibc
         default: mipsel-linux-musl
       toolchaingcc:
-        description: 'Select the toolchain gcc version'
+        description: "Select the toolchain gcc version"
         required: true
         type: choice
         options:
-        - mipsel-linux-musl
-        - mipsel-linux-musl-gcc7
-        - mipsel-linux-musl-gcc10
-        - mipsel-linux-uclibc
-        - mipsel-linux-uclibc-gcc7
-        - mipsel-linux-uclibc-gcc10
+          - mipsel-linux-musl
+          - mipsel-linux-musl-gcc7
+          - mipsel-linux-musl-gcc10
+          - mipsel-linux-uclibc
+          - mipsel-linux-uclibc-gcc7
+          - mipsel-linux-uclibc-gcc10
         default: mipsel-linux-musl
       cpufreq:
-        description: 'CPU Frequency (MHz)'
+        description: "CPU Frequency (MHz)"
         type: boolean
         default: false
       mt7621_oc:
-        description: '1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2'
+        description: "1000Mhz=0x312 1100Mhz=0x362 1120Mhz=0x372 1200Mhz=0x3B2"
         type: choice
         options:
-        - '0x312'
-        - '0x362'
-        - '0x372'
-        - '0x3B2'
+          - "0x312"
+          - "0x362"
+          - "0x372"
+          - "0x3B2"
       plugins:
-        description: 'String JSON list of plug-ins'
+        description: "String JSON list of plug-ins"
         required: true
         type: string
         default: '{"ss":"y","v2ray":"n","xray":"y","trojan":"y","ssobfs":"y","smartdns":"y","vlmcsd":"y","ttyd":"n","iperf3":"n"}'
       customization:
-        description: 'String JSON list of Customization'
+        description: "String JSON list of Customization"
         required: true
         type: string
         default: '{"lanip":"192.168.2.1","signaccount":"admin","signpassword":"admin","wifi2gssid":"Padavan","wifi2gpsk":"1234567890","wifi5gssid":"Padavan-5G","wifi5gpsk":"1234567890"}'
       nanoversion:
         type: boolean
-        description: 'Compile the nano version'
+        description: "Compile the nano version"
         default: false
       oldreleases:
         type: boolean
-        description: 'Delete old releases'
+        description: "Delete old releases"
         default: true
       oldworkflow:
         type: boolean
-        description: 'Delete old workflow runs'
+        description: "Delete old workflow runs"
         default: true
 env:
   FIRMWARE_AUTHOR: TurBoTse
@@ -142,7 +142,7 @@ jobs:
           key: ${{ matrix.target }}-${{ matrix.toolchaingcc }}
       - uses: actions/setup-go@main
         with:
-          go-version: '1.22.3'
+          go-version: "1.22.3"
           check-latest: true
           cache: false
       - name: Prepare environment
@@ -207,6 +207,17 @@ jobs:
           echo "CONFIG_FIRMWARE_INCLUDE_VLMCSD=${{env.vlmcsd}}" >> .config
           echo "CONFIG_FIRMWARE_INCLUDE_TTYD=${{env.ttyd}}" >> .config
           echo "CONFIG_FIRMWARE_INCLUDE_IPERF3=${{env.iperf3}}" >> .config
+          # 额外
+          # MENTOHUST
+          echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=y" >> .config
+          # FRPC
+          echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config
+          # 阿里DDNS
+          echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config
+          # WireGuard
+          echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config
+          # SAMBA
+          echo "CONFIG_FIRMWARE_INCLUDE_SMBD=y" >> .config
           # cpufreq
           if ${{ github.event.inputs.cpufreq == 'true' }}; then
             echo "CONFIG_FIRMWARE_INCLUDE_OC=y" >> .config
