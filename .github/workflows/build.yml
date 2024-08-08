@@ -124,7 +124,7 @@ env:
   TOOLCHAIN_URL: https://github.com/TurBoTse/padavan/releases/download/toolchain
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       target: ${{ matrix.target }}
       toolchain: ${{ matrix.toolchain }}
@@ -211,9 +211,9 @@ jobs:
           # MENTOHUST
           echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=y" >> .config
           # FRPC
-          echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config
+          #echo "CONFIG_FIRMWARE_INCLUDE_FRPC=y" >> .config
           # 阿里DDNS
-          echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config
+          #echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=y" >> .config
           # WireGuard
           echo "CONFIG_FIRMWARE_INCLUDE_WIREGUARD=y" >> .config
           # SAMBA
